@@ -15,6 +15,7 @@ type TablesResponse struct {
 	Etag          string  `json:"etag"`
 	NextPageToken *string `json:"nextPageToken"`
 	Tables        []Table `json:"tables"`
+	TotalItems    int     `json:"totalItems"`
 }
 
 type Table struct {
@@ -23,8 +24,8 @@ type Table struct {
 	ID                        string                      `json:"id"`
 	SelfLink                  string                      `json:"selfLink"`
 	TableReference            TableReference              `json:"tableReference"`
-	FriendlyName              string                      `json:"friendlyName"`
-	Description               string                      `json:"description"`
+	FriendlyName              *string                     `json:"friendlyName"`
+	Description               *string                     `json:"description"`
 	Labels                    *json.RawMessage            `json:"labels"`
 	Schema                    *TableSchema                `json:"schema"`
 	TimePartitioning          *TimePartitioning           `json:"timePartitioning"`
@@ -87,7 +88,7 @@ type Clustering struct {
 type ViewDefinition struct {
 	Query                        string                         `json:"query"`
 	UserDefinedFunctionResources *[]UserDefinedFunctionResource `json:"userDefinedFunctionResources"`
-	UseLegacySQL                 *string                        `json:"useLegacySql"`
+	UseLegacySQL                 *bool                          `json:"useLegacySql"`
 }
 
 type UserDefinedFunctionResource struct {
