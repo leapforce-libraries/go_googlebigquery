@@ -21,6 +21,7 @@ cloud.google.com/go v0.79.0/go.mod h1:3bzgcEeQlzbuEAYu4mrWhKqWjmpprinYgKJLgKHnbb
 cloud.google.com/go v0.80.0/go.mod h1:fqpb6QRi1CFGAMXDoE72G+b+Ybv7dMB/T1tbExDHktI=
 cloud.google.com/go v0.81.0/go.mod h1:mk/AM35KwGk/Nm2YSeZbxXdrNK3KZOYHmLkOqC2V6E0=
 cloud.google.com/go v0.83.0/go.mod h1:Z7MJUsANfY0pYPdw0lbnivPx4/vhy/e2FEkSkF7vAVY=
+cloud.google.com/go v0.84.0 h1:hVhK90DwCdOAYGME/FJd9vNIZye9HBR6Yy3fu4js3N8=
 cloud.google.com/go v0.84.0/go.mod h1:RazrYuxIK6Kb7YrzzhPoLmCVzl7Sup4NrbKPg8KHSUM=
 cloud.google.com/go v0.86.0 h1:Lo1JDRwMOAxQxTQcbGXi4p60jyMoXNpkmzzzL2Agt5k=
 cloud.google.com/go v0.86.0/go.mod h1:YG2MRW8zzPSZaztnTZtxbMPK2VYaHg4NTDYZMG+5ZqQ=
@@ -225,6 +226,8 @@ github.com/leapforce-libraries/go_google v0.0.0-20210414170124-9343570001e8/go.m
 github.com/leapforce-libraries/go_google v0.0.0-20210423214553-0375c4164934/go.mod h1:TgN7RlerriKqnb41qXgs8wT6T+v0F8s1Hj8ikbusnX0=
 github.com/leapforce-libraries/go_google v0.0.0-20210705110720-43d868370877 h1:Ho8zC3pGFMV1FTnjTK/98FEZ8lDLQ1TLwt8RCyC+0vw=
 github.com/leapforce-libraries/go_google v0.0.0-20210705110720-43d868370877/go.mod h1:wwLdIs8qv7jg/InOAOE0ZGAy24G8oUw04yJ9On4RNcE=
+github.com/leapforce-libraries/go_google v0.0.0-20210722093139-073b0a9a43b0 h1:DreFGQdtcp6016DlC2w+ABHBlYDK0zS83FgcKlNToIY=
+github.com/leapforce-libraries/go_google v0.0.0-20210722093139-073b0a9a43b0/go.mod h1:gTIrWbTDxpyiAFWcVmY6px2U2j0pnorGdwBIu2Dsueo=
 github.com/leapforce-libraries/go_googlecloudstorage v0.0.0-20210428222229-1147c7986a8d/go.mod h1:5vTKz3d/EqR85Ge5dN6+emiKfMDh73mibAQRs7wQz8k=
 github.com/leapforce-libraries/go_googlecloudstorage v0.0.0-20210604121700-75c6cd17e42e h1:0xQ9vraB46fyvzKJeo03UqPlvETlfFEMy23ysgRmDrY=
 github.com/leapforce-libraries/go_googlecloudstorage v0.0.0-20210604121700-75c6cd17e42e/go.mod h1:6/17uiw7JJrdEwrrsF3Msr0WGEOMdjj04nRpraCilXo=
@@ -237,6 +240,8 @@ github.com/leapforce-libraries/go_integration v0.0.0-20210526180733-68a2aeb4410c
 github.com/leapforce-libraries/go_oauth2 v0.0.0-20210331163212-54b4c2c31f67/go.mod h1:1KKon26tmDBcn2fVO1rUbpEPJoPyN4OqrLRBSf2l70s=
 github.com/leapforce-libraries/go_oauth2 v0.0.0-20210705110549-376db648b047 h1:FVhyFKFZCkwFXfOR6hHkxdjRJnp0ihdYyFGda0ELQfQ=
 github.com/leapforce-libraries/go_oauth2 v0.0.0-20210705110549-376db648b047/go.mod h1:1XnvMiOXaeHNaF/3SCt3p6ewUcVxJjmwB6bvRwlMET4=
+github.com/leapforce-libraries/go_oauth2 v0.0.0-20210713192125-c6d80d675358 h1:TUCqajN8abW5Q6K/UwtuBc/FL16SFkyBjVhibDoPRK4=
+github.com/leapforce-libraries/go_oauth2 v0.0.0-20210713192125-c6d80d675358/go.mod h1:qaqzJP0MtGLyV7v7rQ9ORBJ2iXHzZl0nD07ztA0efh8=
 github.com/leapforce-libraries/go_types v0.0.0-20210327214904-e5e83ce3293d/go.mod h1:rkVvb9aLkrzggctNNNpIz0fRBwWY+FPj239qRSXxHXs=
 github.com/leapforce-libraries/go_types v0.0.0-20210415100703-687744db463d h1:OoIjjVj57oxIpyS+mRFha3PWbCinSEE46V3XE/Y6eZo=
 github.com/leapforce-libraries/go_types v0.0.0-20210415100703-687744db463d/go.mod h1:rkVvb9aLkrzggctNNNpIz0fRBwWY+FPj239qRSXxHXs=
@@ -644,6 +649,7 @@ google.golang.org/genproto v0.0.0-20210604141403-392c879c8b08/go.mod h1:UODoCrxH
 google.golang.org/genproto v0.0.0-20210608205507-b6d2f5bf0d7d/go.mod h1:UODoCrxHCcBojKKwX1terBiRUaqAsFqJiF615XL43r0=
 google.golang.org/genproto v0.0.0-20210617175327-b9e0b3197ced/go.mod h1:SzzZ/N+nwJDaO1kznhnlzqS8ocJICar6hYhVyhi++24=
 google.golang.org/genproto v0.0.0-20210624174822-c5cf32407d0a/go.mod h1:SzzZ/N+nwJDaO1kznhnlzqS8ocJICar6hYhVyhi++24=
+google.golang.org/genproto v0.0.0-20210624195500-8bfb893ecb84 h1:R1r5J0u6Cx+RNl/6mezTw6oA14cmKC96FeUwL6A9bd4=
 google.golang.org/genproto v0.0.0-20210624195500-8bfb893ecb84/go.mod h1:SzzZ/N+nwJDaO1kznhnlzqS8ocJICar6hYhVyhi++24=
 google.golang.org/genproto v0.0.0-20210701133433-6b8dcf568a95 h1:xyRjacsGcaSoZ2fTcaLCSzh2JEceLLOT4X8k32Q0xAQ=
 google.golang.org/genproto v0.0.0-20210701133433-6b8dcf568a95/go.mod h1:yiaVoXHpRzHGyxV3o4DktVWY4mSUErTKaeEOq6C3t3U=
@@ -681,6 +687,7 @@ google.golang.org/protobuf v1.23.1-0.20200526195155-81db48ad09cc/go.mod h1:EGpAD
 google.golang.org/protobuf v1.24.0/go.mod h1:r/3tXBNzIEhYS9I1OUVjXDlt8tc493IdKGjtUeSXeh4=
 google.golang.org/protobuf v1.25.0/go.mod h1:9JNX74DMeImyA3h4bdi1ymwjUzf21/xIlbajtzgsN7c=
 google.golang.org/protobuf v1.26.0-rc.1/go.mod h1:jlhhOSvTdKEhbULTjvd4ARK9grFBp09yW+WbY/TyQbw=
+google.golang.org/protobuf v1.26.0 h1:bxAC2xTBsZGibn2RTntX0oH50xLsqy1OxA9tTL3p/lk=
 google.golang.org/protobuf v1.26.0/go.mod h1:9q0QmTI4eRPtz6boOQmLYwt+qCgq0jsYwAQnmE0givc=
 google.golang.org/protobuf v1.27.1 h1:SnqbnDw1V7RiZcXPx5MEeqPv2s79L9i7BJUlG/+RurQ=
 google.golang.org/protobuf v1.27.1/go.mod h1:9q0QmTI4eRPtz6boOQmLYwt+qCgq0jsYwAQnmE0givc=
