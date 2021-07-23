@@ -22,3 +22,9 @@ type JobReference struct {
 	JobID     string `json:"jobId"`
 	Location  string `json:"location"`
 }
+
+type ModelReference struct {
+	ProjectID string `json:"projectId"`
+	DatasetID string `json:"datasetId"`
+	ModelID   string `json:"modelId"`
+}

@@ -1,7 +1,6 @@
 package googlebigquery
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -26,7 +25,7 @@ type Table struct {
 	TableReference            TableReference              `json:"tableReference"`
 	FriendlyName              *string                     `json:"friendlyName"`
 	Description               *string                     `json:"description"`
-	Labels                    *json.RawMessage            `json:"labels"`
+	Labels                    *map[string]string          `json:"labels"`
 	Schema                    *TableSchema                `json:"schema"`
 	TimePartitioning          *TimePartitioning           `json:"timePartitioning"`
 	RangePartitioning         *RangePartitioning          `json:"rangePartitioning"`
