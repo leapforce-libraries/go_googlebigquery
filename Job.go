@@ -2,6 +2,7 @@ package googlebigquery
 
 import (
 	"fmt"
+	"net/http"
 	"net/url"
 
 	errortools "github.com/leapforce-libraries/go_errortools"
@@ -248,10 +249,11 @@ func (service *Service) GetJobs(config *GetJobsConfig) (*[]Job, *errortools.Erro
 		jobsReponse := JobsResponse{}
 
 		requestConfig := go_http.RequestConfig{
+			Method:        http.MethodGet,
 			URL:           service.url(fmt.Sprintf("projects/%s/jobs?%s", config.ProjectID, values.Encode())),
 			ResponseModel: &jobsReponse,
 		}
-		_, _, e := service.googleService.Get(&requestConfig)
+		_, _, e := service.googleService.HTTPRequest(&requestConfig)
 		if e != nil {
 			return nil, e
 		}
@@ -284,10 +286,11 @@ func (service *Service) GetJob(config *GetJobConfig) (*Job, *errortools.Error) {
 	job := Job{}
 
 	requestConfig := go_http.RequestConfig{
+		Method:        http.MethodGet,
 		URL:           service.url(fmt.Sprintf("projects/%s/jobs/%s", config.ProjectID, config.JobID)),
 		ResponseModel: &job,
 	}
-	_, _, e := service.googleService.Get(&requestConfig)
+	_, _, e := service.googleService.HTTPRequest(&requestConfig)
 	if e != nil {
 		return nil, e
 	}
