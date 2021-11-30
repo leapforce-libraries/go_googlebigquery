@@ -83,9 +83,9 @@ type QueryParameterType struct {
 }
 
 type QueryParameterValue struct {
-	Value        *string                `json:"value"`
-	ArrayValues  *[]QueryParameterValue `json:"arrayValues"`
-	StructValues map[string]string      `json:"structValues"`
+	Value        *string                         `json:"value"`
+	ArrayValues  *[]QueryParameterValue          `json:"arrayValues"`
+	StructValues *map[string]QueryParameterValue `json:"structValues"`
 }
 
 type ScriptOptions struct {
