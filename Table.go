@@ -237,13 +237,13 @@ func (service *Service) GetTables(config *GetTablesConfig) (*[]Table, *errortool
 	return &tables, nil
 }
 
-type GetTableConfig struct {
+type TableConfig struct {
 	ProjectID string
 	DatasetID string
 	TableID   string
 }
 
-func (service *Service) GetTable(config *GetTableConfig) (*Table, *errortools.Error) {
+func (service *Service) GetTable(config *TableConfig) (*Table, *errortools.Error) {
 	if config == nil {
 		return nil, errortools.ErrorMessage("GetTablesConfig must not be a nil pointer")
 	}
@@ -261,4 +261,21 @@ func (service *Service) GetTable(config *GetTableConfig) (*Table, *errortools.Er
 	}
 
 	return &table, nil
+}
+
+func (service *Service) DeleteTable(config *TableConfig) *errortools.Error {
+	if config == nil {
+		return errortools.ErrorMessage("GetTablesConfig must not be a nil pointer")
+	}
+
+	requestConfig := go_http.RequestConfig{
+		Method: http.MethodDelete,
+		URL:    service.url(fmt.Sprintf("projects/%s/datasets/%s/tables/%s", config.ProjectID, config.DatasetID, config.TableID)),
+	}
+	_, _, e := service.googleService.HTTPRequest(&requestConfig)
+	if e != nil {
+		return e
+	}
+
+	return nil
 }
