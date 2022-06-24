@@ -214,10 +214,10 @@ func (service *Service) GetTables(config *GetTablesConfig) (*[]Table, *errortool
 
 		requestConfig := go_http.RequestConfig{
 			Method:        http.MethodGet,
-			URL:           service.url(fmt.Sprintf("projects/%s/datasets/%s/tables?%s", config.ProjectID, config.DatasetID, values.Encode())),
+			Url:           service.url(fmt.Sprintf("projects/%s/datasets/%s/tables?%s", config.ProjectID, config.DatasetID, values.Encode())),
 			ResponseModel: &tablesReponse,
 		}
-		_, _, e := service.googleService.HTTPRequest(&requestConfig)
+		_, _, e := service.googleService.HttpRequest(&requestConfig)
 		if e != nil {
 			return nil, e
 		}
@@ -252,10 +252,10 @@ func (service *Service) GetTable(config *TableConfig) (*Table, *errortools.Error
 
 	requestConfig := go_http.RequestConfig{
 		Method:        http.MethodGet,
-		URL:           service.url(fmt.Sprintf("projects/%s/datasets/%s/tables/%s", config.ProjectID, config.DatasetID, config.TableID)),
+		Url:           service.url(fmt.Sprintf("projects/%s/datasets/%s/tables/%s", config.ProjectID, config.DatasetID, config.TableID)),
 		ResponseModel: &table,
 	}
-	_, _, e := service.googleService.HTTPRequest(&requestConfig)
+	_, _, e := service.googleService.HttpRequest(&requestConfig)
 	if e != nil {
 		return nil, e
 	}
@@ -270,9 +270,9 @@ func (service *Service) DeleteTable(config *TableConfig) *errortools.Error {
 
 	requestConfig := go_http.RequestConfig{
 		Method: http.MethodDelete,
-		URL:    service.url(fmt.Sprintf("projects/%s/datasets/%s/tables/%s", config.ProjectID, config.DatasetID, config.TableID)),
+		Url:    service.url(fmt.Sprintf("projects/%s/datasets/%s/tables/%s", config.ProjectID, config.DatasetID, config.TableID)),
 	}
-	_, _, e := service.googleService.HTTPRequest(&requestConfig)
+	_, _, e := service.googleService.HttpRequest(&requestConfig)
 	if e != nil {
 		return e
 	}

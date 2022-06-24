@@ -86,10 +86,10 @@ func (service *Service) GetDatasets(config *GetDatasetsConfig) (*[]Dataset, *err
 
 		requestConfig := go_http.RequestConfig{
 			Method:        http.MethodGet,
-			URL:           service.url(fmt.Sprintf("projects/%s/datasets?%s", config.ProjectID, values.Encode())),
+			Url:           service.url(fmt.Sprintf("projects/%s/datasets?%s", config.ProjectID, values.Encode())),
 			ResponseModel: &datasetsReponse,
 		}
-		_, _, e := service.googleService.HTTPRequest(&requestConfig)
+		_, _, e := service.googleService.HttpRequest(&requestConfig)
 		if e != nil {
 			return nil, e
 		}
@@ -123,10 +123,10 @@ func (service *Service) GetDataset(config *GetDatasetConfig) (*Dataset, *errorto
 
 	requestConfig := go_http.RequestConfig{
 		Method:        http.MethodGet,
-		URL:           service.url(fmt.Sprintf("projects/%s/datasets/%s", config.ProjectID, config.DatasetID)),
+		Url:           service.url(fmt.Sprintf("projects/%s/datasets/%s", config.ProjectID, config.DatasetID)),
 		ResponseModel: &dataset,
 	}
-	_, _, e := service.googleService.HTTPRequest(&requestConfig)
+	_, _, e := service.googleService.HttpRequest(&requestConfig)
 	if e != nil {
 		return nil, e
 	}
