@@ -1,6 +1,7 @@
 package googlebigquery
 
 import (
+	"cloud.google.com/go/bigquery"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -50,6 +51,47 @@ type Table struct {
 
 type TableSchema struct {
 	Fields []TableFieldSchema `json:"fields"`
+}
+
+func TableFieldsToSchema(fields *[]TableFieldSchema) bigquery.Schema {
+	var schema bigquery.Schema
+
+	if fields == nil {
+		return schema
+	}
+
+	for _, f := range *fields {
+		var maxLength, precision, scale int64
+		if f.MaxLength.ValuePtr() != nil {
+			maxLength = f.MaxLength.Value()
+		}
+		if f.Precision.ValuePtr() != nil {
+			precision = f.Precision.Value()
+		}
+		if f.Scale.ValuePtr() != nil {
+			scale = f.Scale.Value()
+		}
+
+		var policyTags *bigquery.PolicyTagList = nil
+		if len(f.PolicyTags.Names) > 0 {
+			policyTags = &bigquery.PolicyTagList{Names: f.PolicyTags.Names}
+		}
+
+		schema = append(schema, &bigquery.FieldSchema{
+			Name:        f.Name,
+			Description: f.Description,
+			Repeated:    f.Mode == "REPEATED",
+			Required:    f.Mode == "REQUIRED",
+			Type:        bigquery.FieldType(f.Type),
+			PolicyTags:  policyTags,
+			Schema:      TableFieldsToSchema(&f.Fields),
+			MaxLength:   maxLength,
+			Precision:   precision,
+			Scale:       scale,
+		})
+	}
+
+	return schema
 }
 
 type TableFieldSchema struct {
@@ -237,13 +279,13 @@ func (service *Service) GetTables(config *GetTablesConfig) (*[]Table, *errortool
 	return &tables, nil
 }
 
-type TableConfig struct {
+type GetTableConfig struct {
 	ProjectId string
 	DatasetId string
 	TableId   string
 }
 
-func (service *Service) GetTable(config *TableConfig) (*Table, *errortools.Error) {
+func (service *Service) GetTable(config *GetTableConfig) (*Table, *errortools.Error) {
 	if config == nil {
 		return nil, errortools.ErrorMessage("GetTablesConfig must not be a nil pointer")
 	}
@@ -263,7 +305,7 @@ func (service *Service) GetTable(config *TableConfig) (*Table, *errortools.Error
 	return &table, nil
 }
 
-func (service *Service) DeleteTable(config *TableConfig) *errortools.Error {
+func (service *Service) DeleteTable(config *GetTableConfig) *errortools.Error {
 	if config == nil {
 		return errortools.ErrorMessage("GetTablesConfig must not be a nil pointer")
 	}
