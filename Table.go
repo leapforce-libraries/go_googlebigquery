@@ -21,7 +21,7 @@ type TablesResponse struct {
 type Table struct {
 	Kind                      string                      `json:"kind"`
 	Etag                      string                      `json:"etag"`
-	ID                        string                      `json:"id"`
+	Id                        string                      `json:"id"`
 	SelfLink                  string                      `json:"selfLink"`
 	TableReference            TableReference              `json:"tableReference"`
 	FriendlyName              *string                     `json:"friendlyName"`
@@ -115,7 +115,7 @@ type ExternalDataConfiguration struct {
 	BigtableOptions         *BigtableOptions         `json:"bigtableOptions"`
 	GoogleSheetsOptions     *GoogleSheetsOptions     `json:"googleSheetsOptions"`
 	HivePartitioningOptions *HivePartitioningOptions `json:"hivePartitioningOptions"`
-	ConnectionID            *string                  `json:"connectionId"`
+	ConnectionId            *string                  `json:"connectionId"`
 	DecimalTargetTypes      *[]string                `json:"decimalTargetTypes"`
 	ParquetOptions          *ParquetOptions          `json:"parquetOptions"`
 }
@@ -136,7 +136,7 @@ type BigtableOptions struct {
 }
 
 type BigtableColumnFamily struct {
-	FamilyID       string            `json:"familyId"`
+	FamilyId       string            `json:"familyId"`
 	Type           *string           `json:"type"`
 	Encoding       *string           `json:"encoding"`
 	Columns        *[]BigtableColumn `json:"columns"`
@@ -185,8 +185,8 @@ type SnapshotDefinition struct {
 }
 
 type GetTablesConfig struct {
-	ProjectID  string
-	DatasetID  string
+	ProjectId  string
+	DatasetId  string
 	MaxResults *int
 	PageToken  *string
 }
@@ -214,7 +214,7 @@ func (service *Service) GetTables(config *GetTablesConfig) (*[]Table, *errortool
 
 		requestConfig := go_http.RequestConfig{
 			Method:        http.MethodGet,
-			Url:           service.url(fmt.Sprintf("projects/%s/datasets/%s/tables?%s", config.ProjectID, config.DatasetID, values.Encode())),
+			Url:           service.url(fmt.Sprintf("projects/%s/datasets/%s/tables?%s", config.ProjectId, config.DatasetId, values.Encode())),
 			ResponseModel: &tablesReponse,
 		}
 		_, _, e := service.googleService.HttpRequest(&requestConfig)
@@ -238,9 +238,9 @@ func (service *Service) GetTables(config *GetTablesConfig) (*[]Table, *errortool
 }
 
 type TableConfig struct {
-	ProjectID string
-	DatasetID string
-	TableID   string
+	ProjectId string
+	DatasetId string
+	TableId   string
 }
 
 func (service *Service) GetTable(config *TableConfig) (*Table, *errortools.Error) {
@@ -252,7 +252,7 @@ func (service *Service) GetTable(config *TableConfig) (*Table, *errortools.Error
 
 	requestConfig := go_http.RequestConfig{
 		Method:        http.MethodGet,
-		Url:           service.url(fmt.Sprintf("projects/%s/datasets/%s/tables/%s", config.ProjectID, config.DatasetID, config.TableID)),
+		Url:           service.url(fmt.Sprintf("projects/%s/datasets/%s/tables/%s", config.ProjectId, config.DatasetId, config.TableId)),
 		ResponseModel: &table,
 	}
 	_, _, e := service.googleService.HttpRequest(&requestConfig)
@@ -270,7 +270,7 @@ func (service *Service) DeleteTable(config *TableConfig) *errortools.Error {
 
 	requestConfig := go_http.RequestConfig{
 		Method: http.MethodDelete,
-		Url:    service.url(fmt.Sprintf("projects/%s/datasets/%s/tables/%s", config.ProjectID, config.DatasetID, config.TableID)),
+		Url:    service.url(fmt.Sprintf("projects/%s/datasets/%s/tables/%s", config.ProjectId, config.DatasetId, config.TableId)),
 	}
 	_, _, e := service.googleService.HttpRequest(&requestConfig)
 	if e != nil {

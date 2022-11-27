@@ -20,7 +20,7 @@ type JobsResponse struct {
 type Job struct {
 	Kind          string           `json:"kind"`
 	Etag          string           `json:"etag"`
-	ID            string           `json:"id"`
+	Id            string           `json:"id"`
 	SelfLink      string           `json:"selfLink"`
 	UserEmail     string           `json:"user_email"`
 	Configuration JobConfiguration `json:"configuration"`
@@ -169,9 +169,9 @@ type JobStatistics struct {
 	//Extract                    *JobStatistics4             `json:"extract"`
 	TotalSlotMS *go_types.Int64String `json:"totalSlotMs"`
 	//ReservationUsage           *[]ReservationUsage         `json:"reservationUsage"`
-	ReservationID *string               `json:"reservation_id"`
+	ReservationId *string               `json:"reservation_id"`
 	NumChildJobs  *go_types.Int64String `json:"numChildJobs"`
-	ParentJobID   *string               `json:"parentJobId"`
+	ParentJobId   *string               `json:"parentJobId"`
 	//ScriptStatistics           *ScriptStatistics           `json:"scriptStatistics"`
 	//RowLevelSecurityStatistics *RowLevelSecurityStatistics `json:"rowLevelSecurityStatistics"`
 	//TransactionInfo            *TransactionInfo            `json:"transactionInfo"`
@@ -184,7 +184,7 @@ type JobStatus struct {
 }
 
 type GetJobsConfig struct {
-	ProjectID       string
+	ProjectId       string
 	AllUsers        *bool
 	MaxResults      *int
 	MinCreationTime *int64
@@ -192,7 +192,7 @@ type GetJobsConfig struct {
 	PageToken       *string
 	Projection      *JobProjection
 	StateFilter     *[]JobState
-	ParentJobID     *string
+	ParentJobId     *string
 }
 
 type JobProjection string
@@ -250,7 +250,7 @@ func (service *Service) GetJobs(config *GetJobsConfig) (*[]Job, *errortools.Erro
 
 		requestConfig := go_http.RequestConfig{
 			Method:        http.MethodGet,
-			Url:           service.url(fmt.Sprintf("projects/%s/jobs?%s", config.ProjectID, values.Encode())),
+			Url:           service.url(fmt.Sprintf("projects/%s/jobs?%s", config.ProjectId, values.Encode())),
 			ResponseModel: &jobsReponse,
 		}
 		_, _, e := service.googleService.HttpRequest(&requestConfig)
@@ -274,8 +274,8 @@ func (service *Service) GetJobs(config *GetJobsConfig) (*[]Job, *errortools.Erro
 }
 
 type GetJobConfig struct {
-	ProjectID string
-	JobID     string
+	ProjectId string
+	JobId     string
 }
 
 func (service *Service) GetJob(config *GetJobConfig) (*Job, *errortools.Error) {
@@ -287,7 +287,7 @@ func (service *Service) GetJob(config *GetJobConfig) (*Job, *errortools.Error) {
 
 	requestConfig := go_http.RequestConfig{
 		Method:        http.MethodGet,
-		Url:           service.url(fmt.Sprintf("projects/%s/jobs/%s", config.ProjectID, config.JobID)),
+		Url:           service.url(fmt.Sprintf("projects/%s/jobs/%s", config.ProjectId, config.JobId)),
 		ResponseModel: &job,
 	}
 	_, _, e := service.googleService.HttpRequest(&requestConfig)

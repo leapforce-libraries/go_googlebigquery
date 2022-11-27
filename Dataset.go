@@ -21,7 +21,7 @@ type DatasetsResponse struct {
 type Dataset struct {
 	Kind                           string                `json:"kind"`
 	Etag                           string                `json:"etag"`
-	ID                             string                `json:"id"`
+	Id                             string                `json:"id"`
 	SelfLink                       string                `json:"selfLink"`
 	DatasetReference               DatasetReference      `json:"datasetReference"`
 	FriendlyName                   *string               `json:"friendlyName"`
@@ -50,7 +50,7 @@ type DatasetAccess struct {
 }
 
 type GetDatasetsConfig struct {
-	ProjectID  string
+	ProjectId  string
 	All        *bool
 	Filter     *string
 	MaxResults *int
@@ -86,7 +86,7 @@ func (service *Service) GetDatasets(config *GetDatasetsConfig) (*[]Dataset, *err
 
 		requestConfig := go_http.RequestConfig{
 			Method:        http.MethodGet,
-			Url:           service.url(fmt.Sprintf("projects/%s/datasets?%s", config.ProjectID, values.Encode())),
+			Url:           service.url(fmt.Sprintf("projects/%s/datasets?%s", config.ProjectId, values.Encode())),
 			ResponseModel: &datasetsReponse,
 		}
 		_, _, e := service.googleService.HttpRequest(&requestConfig)
@@ -110,8 +110,8 @@ func (service *Service) GetDatasets(config *GetDatasetsConfig) (*[]Dataset, *err
 }
 
 type GetDatasetConfig struct {
-	ProjectID string
-	DatasetID string
+	ProjectId string
+	DatasetId string
 }
 
 func (service *Service) GetDataset(config *GetDatasetConfig) (*Dataset, *errortools.Error) {
@@ -123,7 +123,7 @@ func (service *Service) GetDataset(config *GetDatasetConfig) (*Dataset, *errorto
 
 	requestConfig := go_http.RequestConfig{
 		Method:        http.MethodGet,
-		Url:           service.url(fmt.Sprintf("projects/%s/datasets/%s", config.ProjectID, config.DatasetID)),
+		Url:           service.url(fmt.Sprintf("projects/%s/datasets/%s", config.ProjectId, config.DatasetId)),
 		ResponseModel: &dataset,
 	}
 	_, _, e := service.googleService.HttpRequest(&requestConfig)
